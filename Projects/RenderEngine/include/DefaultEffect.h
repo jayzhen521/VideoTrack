@@ -11,11 +11,11 @@ namespace RenderEngine
     /*
     * design pattern: Strategy
     */
-    class Filter : public RenderingObject
+    class DefaultEffect : public RenderingObject
     {
     public:
         
-        Filter();
+        DefaultEffect();
 
         virtual void SelfRendering() override;
 
@@ -25,7 +25,7 @@ namespace RenderEngine
 
     };
 
-    typedef std::shared_ptr<Filter> Sp_Filter;
+    typedef std::shared_ptr<DefaultEffect> Sp_DefaultEffect;
 };
 
 

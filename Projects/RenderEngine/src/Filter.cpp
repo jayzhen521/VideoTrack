@@ -7,7 +7,7 @@ namespace RenderEngine
     Filter::Filter()
     {
     }
-    void Filter::Rendering()
+    void Filter::SelfRendering()
     {
         Print("Render Filter");
     }

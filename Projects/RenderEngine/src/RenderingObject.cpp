@@ -21,6 +21,19 @@ namespace RenderEngine
 
     void RenderingObject::Rendering()
     {
+        for (const auto item : _renderingObjects)
+        {
+            item->Rendering();
+        }
+
+        Print("After Sub Rendering, do assembly rendering");
+
+        SelfRendering();
+        
+    }
+
+    void RenderingObject::SelfRendering()
+    {
     }
 
     void RenderingObject::SetProgram(Sp_Program program)
@@ -35,19 +48,28 @@ namespace RenderEngine
 
     void RenderingObject::Add(Sp_RenderingObject renderingObject)
     {
-        Print("Error--Add is not allowed");
+        _renderingObjects.insert(renderingObject);
     }
 
     void RenderingObject::Remove(Sp_RenderingObject renderingObject)
     {
-        Print("Error--Remove is not allowed");
+        _renderingObjects.erase(renderingObject);
     }
 
     Sp_RenderingObject RenderingObject::GetChild(int idx)
     {
-        Print("Error--GetChild is not allowed");
+        //This code maybe useless, we don't have the chance to get child by idx
 
-        return nullptr;
+        if (idx < 0) return nullptr;
+
+        auto ptr = _renderingObjects.begin();
+        int i = 0;
+
+        while (ptr != _renderingObjects.end() && i < idx) {
+            ptr++;
+        }
+
+        return *ptr;
 
     }
 }

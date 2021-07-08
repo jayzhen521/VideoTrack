@@ -11,21 +11,21 @@ namespace RenderEngine
     /*
     * design pattern: Strategy
     */
-    class Filter : public RenderingObject
+    class TempSticker : public RenderingObject
     {
     public:
-        
-        Filter();
+
+        TempSticker();
 
         virtual void SelfRendering() override;
 
     private:
-        
+
         std::map<std::string, Sp_Texture> _textures;
 
     };
 
-    typedef std::shared_ptr<Filter> Sp_Filter;
+    typedef std::shared_ptr<TempSticker> Sp_TempSticker;
 };
 
 

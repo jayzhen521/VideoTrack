@@ -7,8 +7,9 @@
 
 #include "Filter.h"
 #include "Text.h"
+#include "TempSticker.h"
+#include "DefaultEffect.h"
 #include "FramebufferObject.h"
-#include "CompositeRenderingObject.h"
 
 using namespace Algo;
 using namespace RenderEngine;
@@ -66,12 +67,17 @@ int main()
     Sp_RenderingObject rofE(new Filter());
 
     Sp_RenderingObject rot(new Text());
+    Sp_RenderingObject rots(new TempSticker());
+    Sp_RenderingObject rot2(new Text());
 
-    Sp_RenderingObject root(new CompositeRenderingObject());
+    Sp_RenderingObject root(new DefaultEffect());
     
     root->Add(rofA);
     root->Add(rofB);
+    rofB->Add(rot);
     root->Add(rofC);
+    rofC->Add(rots);
+    rofC->Add(rot2);
     root->Add(rofD);
     root->Add(rofE);
     

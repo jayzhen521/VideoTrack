@@ -10,7 +10,7 @@ namespace RenderEngine
         
         Text();
 
-        void Rendering() override;
+        virtual void SelfRendering() override;
 
     };
 

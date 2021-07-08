@@ -23,6 +23,8 @@ namespace RenderEngine
 
         virtual void Rendering();
 
+        virtual void SelfRendering();
+
         //Program setting
         void SetProgram(Sp_Program program);
         Sp_Program GetProgram();
@@ -33,6 +35,17 @@ namespace RenderEngine
         virtual Sp_RenderingObject GetChild(int idx);
 
     protected:
+
+        class Comp
+        {
+        public:
+            inline bool operator()  (const Sp_RenderingObject& lhs, const Sp_RenderingObject& rhs) const {
+                return lhs->GetRenderingOrder() < rhs->GetRenderingOrder();
+            }
+        };
+
+        std::multiset < Sp_RenderingObject, Comp> _renderingObjects;
+
         Sp_Program _program;
 
         RenderingOrder _renderingOrder;

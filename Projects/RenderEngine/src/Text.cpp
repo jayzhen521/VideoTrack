@@ -7,7 +7,7 @@ namespace RenderEngine
     Text::Text()
     {
     }
-    void Text::Rendering()
+    void Text::SelfRendering()
     {
         Print("Render Text");
     }
