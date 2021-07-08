@@ -5,7 +5,13 @@
 
 #include "IntervalSegmentOrganizer.h"
 
+#include "Filter.h"
+#include "Text.h"
+#include "FramebufferObject.h"
+#include "CompositeRenderingObject.h"
+
 using namespace Algo;
+using namespace RenderEngine;
 
 int main()
 {
@@ -49,4 +55,40 @@ int main()
 
     tso.GetIntervalSegmentByTime(90);
     std::cout << "in--- " << " SegmentNumber:" << tso.GetIntervalSegmentByTime(90).size() << std::endl;
+
+    //Test RenderingObject Compoite
+    //rof = render object filter
+    //rot = render object text
+    Sp_RenderingObject rofA(new Filter());
+    Sp_RenderingObject rofB(new Filter());
+    Sp_RenderingObject rofC(new Filter());
+    Sp_RenderingObject rofD(new Filter());
+    Sp_RenderingObject rofE(new Filter());
+
+    Sp_RenderingObject rot(new Text());
+
+    Sp_RenderingObject root(new CompositeRenderingObject());
+    
+    root->Add(rofA);
+    root->Add(rofB);
+    root->Add(rofC);
+    root->Add(rofD);
+    root->Add(rofE);
+    
+    root->Rendering();
+
+    
+    
+
+    
+    
+    
+
+
+
+
+
+
+
+
 }
